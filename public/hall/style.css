@@ -1,0 +1,57 @@
+body {
+    margin: 0
+}
+
+.hall {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.screen {
+    width: 50%;
+    background-color: #e4e4e4;
+    color: #898989;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.seat {
+    background: #5F9EA0;
+    width: 3.84615%;
+    max-width: 27px;
+    max-height: 27px;
+    min-width: 22px;
+    min-width: 22px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.seat:before {
+    content: "";
+    padding-top: 20%;
+    padding-bottom: 70%;
+    display: inline-block;
+}
+
+.row-name {
+    position: relative;
+    width: 3.84615%;
+    max-width: 27px;
+    max-height: 27px;
+    min-width: 22px;
+    min-width: 22px;
+    display: inline-block;
+    text-align: center;
+    background: white;
+    color: black;
+    overflow: hidden;
+}
