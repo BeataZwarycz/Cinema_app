@@ -1,11 +1,13 @@
 {
-  "name": "cinema_app",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "formik": "^1.5.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.0.1",
+    "react-select": "^2.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
