@@ -91,6 +91,7 @@ nav {
     overflow: hidden;
     position: relative;
     text-align: center;
+    margin: 1px;
 }
 
 .seat:before {

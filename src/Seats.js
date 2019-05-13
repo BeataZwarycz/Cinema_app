@@ -4,18 +4,7 @@ import './seats.css';
 class Seats extends Component {
     render() {
         return(
-            <div>
-            <header>
-                <nav className="navbar">
-                    <a className="logo" href="#"><i className="fa fa-film"></i> Coderscamp Cinema</a>
-                </nav>
-            </header>
             <div className="hall">
-                <div className="reservation-details">
-                    <p className="movie-name">Tytuł filmu</p>
-                    <p className="movie-time">Data i godzina</p>
-                    <button className="reservation-btn">Rezerwuj wybrane miejsca</button>
-                </div>
                 <div className="seats">
                     <div className="screen">Ekran</div>
                     <div className="row">
@@ -262,7 +251,6 @@ class Seats extends Component {
                         <div className="seat">14</div>
                     </div>
                 </div>
-            </div> 
             </div>
         )
     }
