@@ -5,6 +5,8 @@ import ReactDOM from "react-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import Seats from "./Seats";
+import AppHeader from "./AppHeader";
+import MovieDetails from "./MovieDetails";
 
 class Main extends Component {
   popularMoviesUrl =
@@ -85,7 +87,14 @@ class Main extends Component {
 
   goToSeats() {
     const rootElement = document.getElementById("root");
-    ReactDOM.render(<Seats />, rootElement);
+    ReactDOM.render(
+      <div>
+        <AppHeader />
+        <MovieDetails />
+        <Seats />
+      </div>,
+      rootElement
+    );
   }
 }
 
