@@ -7,6 +7,8 @@ import moment from "moment";
 import Seats from "./Seats";
 import AppHeader from "./AppHeader";
 import MovieDetails from "./MovieDetails";
+import s from "./Main.css";
+
 
 class Main extends Component {
   popularMoviesUrl =
@@ -33,26 +35,30 @@ class Main extends Component {
     for (var i = 0; i < this.state.movies.length; i++) {
       moviesHtml.push(
         <div key={i} className="movie-container">
-          <p className="movie-name">{this.state.movies[i].original_title}</p>
           <button className="buy-ticket">
-            <img
-              className="poster"
-              src={this.imageUrl + this.state.movies[i].poster_path}
-              alt=""
-            />
+            <div className="poster">
+              <img
+                src={this.imageUrl + this.state.movies[i].poster_path}
+                alt=""
+              />
+            </div>
+            <p className="movie-name">{this.state.movies[i].original_title}</p>
           </button>
-          <DatePicker
-            selected={this.state.startDate}
-            onChange={this.handleChange}
-            showTimeSelect
-            timeFormat="HH:mm"
-            dateFormat="MMMM d, yyyy h:mm aa"
-            minDate={new Date()}
-            maxDate={moment()
-              .add(5, "days")
-              .toDate()}
-          />
-          <button onClick={this.goToSeats}>Rezerwuj</button>
+          <div className="choose-date">
+            <p>Wybierz datę seansu</p>
+            <DatePicker className="data"
+              selected={this.state.startDate}
+              onChange={this.handleChange}
+              showTimeSelect
+              timeFormat="HH:mm"
+              dateFormat="MMMM d, yyyy h:mm aa"
+              minDate={new Date()}
+              maxDate={moment()
+                .add(5, "days")
+                .toDate()}
+            />
+          </div>
+          <button className="reserve" onClick={this.goToSeats}>Rezerwuj</button>
         </div>
       );
     }
@@ -66,7 +72,7 @@ class Main extends Component {
       result => {
         this.setState({ movies: result.results });
       },
-      function(error) {
+      function (error) {
         console.log(error);
       }
     );
