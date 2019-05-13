@@ -11,4 +11,3 @@ render(
         <Seats />
     </div>, document.getElementById('root')
 );
-

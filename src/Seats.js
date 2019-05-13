@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-import './seats.css';
+import React, { Component } from "react";
+import "./seats.css";
+import ReactDOM from "react-dom";
+import Main from "./Main";
 
 class Seats extends Component {
+          <button className="reservation-btn" onClick={this.goToMain}>
     render() {
         return(
             <div className="hall">
