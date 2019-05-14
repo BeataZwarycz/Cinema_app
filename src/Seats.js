@@ -12,19 +12,21 @@ class Seats extends Component {
   onClickHandler(e) {
     const seat = e.target;
 
-    if ((seat.style.background = "#5F9EA0")) {
+    if (seat.className === "seat") {
       seat.style.color = "#ffffff";
-      seat.style.background = "#8b0000";
-
-      console.log(seat.style.background);
+      seat.style.background = "rgb(139, 0, 0)";
+      seat.className = "seat clicked";
 
       this.setState(state => ({
         numOfTickets: state.numOfTickets + 1
       }));
+      console.log(this.state.numOfTickets)
 
       return this.state.numOfTickets;
-    } else {
+    } if (seat.className === "seat clicked") {
       seat.style.background = "#5F9EA0";
+      seat.style.color = "#000000"
+      seat.className = "seat"
 
       this.setState(state => ({
         numOfTickets: state.numOfTickets - 1
