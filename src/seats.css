@@ -109,10 +109,10 @@ nav {
   cursor: pointer;
 }
 
-.seat:active {
+/*.seat:active {
   background: #8b0000;
   color: #ffffff;
-}
+}*/
 
 .row-name {
   position: relative;
