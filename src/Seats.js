@@ -5,12 +5,38 @@ import Main from "./Main";
 
 class Seats extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { numOfTickets : 0 };
+
+    this.onClickHeandler = this.onClickHeandler.bind(this);
+  }
+
   onClickHeandler(e) {
     const seat = e.target
-    console.log(e.target)
-    seat.style.color = "#ffffff"
-    seat.style.backgroundColor = "#8b0000"
-    //seat.addEventListener('click', () => {seat.style.color = "white"; seat.style.backgroundColor = "#8b0000"})
+
+    if (seat.style.background = "#5F9EA0") {
+      seat.style.color = "#ffffff"
+      seat.style.background = "#8b0000"
+
+      console.log(seat.style.background)
+
+      this.setState(state => ({
+        numOfTickets : state.numOfTickets + 1
+
+      }))
+
+      return this.state.numOfTickets
+    } else {
+      seat.style.background = "#5F9EA0"
+
+      this.setState(state => ({
+        numOfTickets : state.numOfTickets - 1
+
+      }))
+
+      return this.state.numOfTickets
+    }
   }
 
   render() {

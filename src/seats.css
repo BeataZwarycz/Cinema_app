@@ -103,7 +103,7 @@ nav {
   display: inline-block;
 }
 
-.seat:hover {
+ .seat:hover {
   background: #2f4f4f;
   color: #f0fff0;
   cursor: pointer;
