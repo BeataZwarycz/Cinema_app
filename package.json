@@ -1,14 +1,14 @@
 {
-  "name": "cinema_app",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "formik": "^1.5.4",
     "moment": "^2.24.0",
+    "formik": "^1.5.4",
     "react": "^16.8.6",
     "react-datepicker": "^2.5.0",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
