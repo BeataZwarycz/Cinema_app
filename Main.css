@@ -1,0 +1,84 @@
+.movie-container {
+  display: flex;
+  background-color: rgba(44, 45, 49, 0.38);
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.buy-ticket {
+  background-color: rgba(44, 45, 49, 0.38);
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.buy-ticket:hover {
+  background-color: rgba(44, 45, 49, 0.7);
+}
+
+.poster {
+  margin: 0 auto;
+}
+
+.poster img {
+  width: 100%;
+}
+
+.movie-name {
+  font-family: sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+
+
+.choose-date {
+  background-color: rgba(44, 45, 49, 0.7);
+  padding-bottom: 1.3em;
+  font-family: sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+  color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choose-date p {
+  cursor: default;
+}
+
+.data {
+  text-align: center;
+  cursor: pointer;
+  font-size: 1em;
+  border: none;
+  padding: 0;
+  border-radius: 0.1em;
+}
+
+.reserve {
+  margin: 0.7em;
+  background-color: rgb(44, 45, 49);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.reserve:hover {
+  background-color: #609c9e;
+  cursor: pointer;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
