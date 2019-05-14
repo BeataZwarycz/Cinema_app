@@ -15,6 +15,13 @@ class MovieDetails extends Component {
         <p className="movie-name">{movie}</p>
         <p className="movie-time">{date}</p>
         <Popup
+          trigger={<button className="buy-btn">Wybierz rodzaj biletów</button>}
+          position="right center"
+          modal
+        >
+          <Tickets />
+        </Popup>
+        <Popup
           trigger={
             <button className="reservation-btn">
               Rezerwuj wybrane miejsca
@@ -24,13 +31,6 @@ class MovieDetails extends Component {
           modal
         >
           <Reservation />
-        </Popup>
-        <Popup
-          trigger={<button className="buy-btn">Kup wybrane miejsca</button>}
-          position="right center"
-          modal
-        >
-          <Tickets />
         </Popup>
       </div>
     );

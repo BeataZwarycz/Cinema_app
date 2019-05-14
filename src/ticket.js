@@ -3,17 +3,17 @@ import Select from "react-select";
 import "./ticket.css";
 
 const options1 = [
-  { value: "0", label: "0" },
-  { value: "1", label: "1" },
-  { value: "2", label: "2" },
-  { value: "3", label: "3" },
-  { value: "4", label: "4" },
-  { value: "4", label: "4" },
-  { value: "6", label: "6" },
-  { value: "7", label: "7" },
-  { value: "8", label: "8" },
-  { value: "9", label: "9" },
-  { value: "10", label: "10" }
+  { value: 0, label: "0" },
+  { value: 1, label: "1" },
+  { value: 2, label: "2" },
+  { value: 3, label: "3" },
+  { value: 4, label: "4" },
+  { value: 4, label: "4" },
+  { value: 6, label: "6" },
+  { value: 7, label: "7" },
+  { value: 8, label: "8" },
+  { value: 9, label: "9" },
+  { value: 10, label: "10" }
 ];
 
 const options2 = [
@@ -24,13 +24,19 @@ const options2 = [
 ];
 
 class Amount extends React.Component {
-  state = {
-    selectedOption: null
+  constructor(props) {
+    super(props);
+    this.state = { numOfTickets: 0 };
+
+    this.handleChange = this.handleChange.bind(this);
   };
+
   handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+    this.setState({
+      numOfTickets: this.state.numOfTickets + selectedOption.value
+    }, () => {console.log(this.state)})
   };
+
   render() {
     const { selectedOption } = this.state;
 

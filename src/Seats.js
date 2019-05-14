@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { Amount } from "./ticket.js"
 import "./seats.css";
 
 class Seats extends Component {
   constructor(props) {
     super(props);
-    this.state = { numOfTickets: 0 };
+    this.state = { numOfTicket: 0 };
 
     this.onClickHandler = this.onClickHandler.bind(this);
   }
