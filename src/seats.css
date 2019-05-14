@@ -32,7 +32,8 @@ nav {
   color: #ffffff;
 }
 
-.reservation-btn {
+.reservation-btn,
+.buy-btn {
   border: 1px solid #ffffff;
   background: none;
   padding: 10px 20px;
@@ -43,11 +44,14 @@ nav {
   overflow: hidden;
 }
 
-.reservation-btn:hover {
+.reservation-btn:hover,
+.buy-btn:hover {
   color: black;
+  cursor: pointer;
 }
 
-.reservation-btn::before {
+.reservation-btn::before,
+.buy-btn::before {
   content: "";
   position: absolute;
   left: 0;
@@ -60,7 +64,8 @@ nav {
   border-radius: 0 0 50% 50%;
 }
 
-.reservation-btn:hover::before {
+.reservation-btn:hover::before,
+.buy-btn:hover::before {
   height: 180%;
 }
 
@@ -83,7 +88,7 @@ nav {
 }
 
 .seat {
-  background: #5F9EA0;
+  background: #5f9ea0;
   width: 3.84615%;
   max-width: 27px;
   max-height: 27px;
@@ -103,7 +108,7 @@ nav {
   display: inline-block;
 }
 
- .seat:hover {
+.seat:hover {
   background: #2f4f4f;
   color: #f0fff0;
   cursor: pointer;
