@@ -1,15 +1,12 @@
 .container {
-    margin: 20px auto;
+    margin: 0;
     display: flex;
     font-family: sans-serif;
-    width: 50vh;
     height: 100%;
     background-color: #babfc2;
-    border-radius: 5px;
     padding: 2em;
     flex-direction: column;
     border: medium solid #2a2a2a
-        /*visibility: none;*/
 }
 
 Button[type=submit] {
@@ -28,22 +25,24 @@ Button[type=submit]:hover {
     background-color: #335050;
 }
 
-#ticket-type {
+.ticket-type {
     width: 60%;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 0.8em;
+    color: #363636;
 }
 
-#amount {
+.amount {
     width: 40%;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 0.8em;
+    color: #363636;
 }
 
 select {
@@ -58,7 +57,7 @@ select {
 
 .main-header {
     color: #363636;
-    font-size: 1.6em;
+    font-size: 1em;
     text-align: center;
     margin: 0 0 1.2em 0;
 }

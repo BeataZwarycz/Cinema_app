@@ -76,8 +76,14 @@ class Tickets extends Component {
         </div>
         <div className="tickets">
           <div className="ticket">
-            <Type />
-            <Amount />
+            <div className="ticket-type"><Type /></div>
+            <div className="amount"><Amount /></div>
+            <div className="ticket-type"><Type /></div>
+            <div className="amount"><Amount /></div>
+            <div className="ticket-type"><Type /></div>
+            <div className="amount"><Amount /></div>
+            <div className="ticket-type"><Type /></div>
+            <div className="amount"><Amount /></div>
           </div>
           <div className="button">
             <button type="submit">Wybierz miejsca</button>
