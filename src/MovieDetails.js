@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./seats.css";
-import { Formik, Field } from "formik";
-import Form from "./reservation";
 import Popup from "reactjs-popup";
 import Reservation from "./reservation";
 

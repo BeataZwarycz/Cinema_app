@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./seats.css";
 import ReactDOM from "react-dom";
-import MovieDetails from "./MovieDetails";
-import Seats from "./Seats";
 import Main from "./Main";
 
 class AppHeader extends Component {
@@ -10,7 +8,7 @@ class AppHeader extends Component {
     return (
       <header>
         <nav className="navbar">
-          <a className="logo" href="#" onClick={this.goToMain}>
+          <a className="logo" href="_blank" onClick={this.goToMain}>
             <i className="fa fa-film" /> Coderscamp Cinema
           </a>
         </nav>
