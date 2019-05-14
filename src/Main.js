@@ -7,7 +7,7 @@ import moment from "moment";
 import Seats from "./Seats";
 import AppHeader from "./AppHeader";
 import MovieDetails from "./MovieDetails";
-import s from "./Main.css";
+import "./Main.css";
 
 
 class Main extends Component {
