@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./seats.css";
+import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import ReactDOM from "react-dom";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,8 +7,8 @@ import moment from "moment";
 import Seats from "./Seats";
 import AppHeader from "./AppHeader";
 import MovieDetails from "./MovieDetails";
+import Popup from "reactjs-popup";
 import "./Main.css";
-
 
 class Main extends Component {
   popularMoviesUrl =
@@ -19,46 +19,94 @@ class Main extends Component {
     super(props);
     this.state = {
       movies: [],
-      startDate: new Date()
+      startDate: "",
+      startTime: "",
+      selectedDate: new Date(),
+      isDateSelected: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(date) {
+    const dd = String(date.getDate()).padStart(2, "0");
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const yyyy = date.getFullYear();
     this.setState({
-      startDate: date
+      startDate: dd + "." + mm + "." + yyyy,
+      startTime: date
+        .toString()
+        .split(" ")[4]
+        .substring(0, 5),
+      selectedDate: date,
+      isDateSelected: true
     });
   }
+
+  resetDateSelected = () => {
+    this.setState({
+      isDateSelected: false
+    });
+  };
 
   render() {
     var moviesHtml = [];
     for (var i = 0; i < this.state.movies.length; i++) {
+      const movie = this.state.movies[i];
       moviesHtml.push(
         <div key={i} className="movie-container">
           <button className="buy-ticket">
             <div className="poster">
-              <img
-                src={this.imageUrl + this.state.movies[i].poster_path}
-                alt=""
-              />
+              <img src={this.imageUrl + movie.poster_path} alt="" />
             </div>
-            <p className="movie-name">{this.state.movies[i].original_title}</p>
+            <p className="movie-name">{movie.original_title}</p>
           </button>
-          <div className="choose-date">
-            <p>Wybierz datę seansu</p>
-            <DatePicker className="data"
-              selected={this.state.startDate}
-              onChange={this.handleChange}
-              showTimeSelect
-              timeFormat="HH:mm"
-              dateFormat="MMMM d, yyyy h:mm aa"
-              minDate={new Date()}
-              maxDate={moment()
-                .add(5, "days")
-                .toDate()}
-            />
-          </div>
-          <button className="reserve" onClick={this.goToSeats}>Rezerwuj</button>
+          <Popup
+            trigger={<button className="reserve">Rezerwuj</button>}
+            modal
+            onClose={this.resetDateSelected}
+          >
+            {close => (
+              <div>
+                <div className="header">Wybierz datę seansu</div>
+                <div className="content">
+                  <DatePicker
+                    className="data"
+                    selected={this.state.selectedDate}
+                    onChange={this.handleChange}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    dateFormat="dd.MM.yyyy HH:mm"
+                    minDate={new Date()}
+                    maxDate={moment()
+                      .add(5, "days")
+                      .toDate()}
+                  />
+                </div>
+                <div className="actions">
+                  <button
+                    className="button"
+                    onClick={() => {
+                      close();
+                    }}
+                  >
+                    close
+                  </button>
+                  <button
+                    className="button"
+                    {...(this.state.isDateSelected ? {} : { disabled: true })}
+                  >
+                    <Link
+                      to={`/movie/${movie.id}/${movie.original_title}/${
+                        this.state.startDate
+                      }/${this.state.startTime}`}
+                    >
+                      Rezerwuj
+                    </Link>
+                  </button>
+                </div>
+              </div>
+            )}
+          </Popup>
         </div>
       );
     }
@@ -72,7 +120,7 @@ class Main extends Component {
       result => {
         this.setState({ movies: result.results });
       },
-      function (error) {
+      function(error) {
         console.log(error);
       }
     );

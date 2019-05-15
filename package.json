@@ -8,9 +8,10 @@
     "react": "^16.8.6",
     "react-datepicker": "^2.5.0",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "reactjs-popup": "^1.4.0",
-    "react-select": "^2.4.3"
+    "react-select": "^2.4.3",
+    "reactjs-popup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

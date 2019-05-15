@@ -1,687 +1,76 @@
 import React, { Component } from "react";
-import { Amount } from "./ticket.js"
 import "./seats.css";
 
 class Seats extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { number: 0 };
-
-    this.onClickHandler = this.onClickHandler.bind(this);
-  }
-
-  onClickHandler(e) {
+  handleSeatClick = e => {
     const seat = e.target;
-    console.log(Amount)
-
+    if (seat.className === "seat blocked") return;
     if (seat.className === "seat") {
+      if (this.props.selectedSeats.length >= this.props.numOfTickets) return;
       seat.style.color = "#ffffff";
       seat.style.background = "rgb(139, 0, 0)";
       seat.className = "seat clicked";
-
-      this.setState(state => ({
-        number: state.number + 1
-      }));
-      console.log(this.state.number)
-
-      return this.state.numOfTickets;
-    } if (seat.className === "seat clicked") {
+      this.props.handleSeatClick(true, e.target.id);
+    } else if (seat.className === "seat clicked") {
       seat.style.background = "#5F9EA0";
-      seat.style.color = "#000000"
-      seat.className = "seat"
-
-      this.setState(state => ({
-        number: state.number - 1
-      }));
-
-      return this.state.number;
+      seat.style.color = "#000000";
+      seat.className = "seat";
+      this.props.handleSeatClick(false, e.target.id);
     }
-  }
+  };
+
+  renderRow = (name, seats) => {
+    const divs = [];
+    divs.push(
+      <div key={name} className="row-name">
+        {name}
+      </div>
+    );
+    for (let i = 1; i <= seats; i++) {
+      divs.push(
+        <div
+          id={`${name}-${i}`}
+          ref={`${name}-${i}`}
+          key={`${name}-${i}`}
+          className={
+            this.props.blockedSeats &&
+            this.props.blockedSeats.includes(`${name}-${i}`)
+              ? "seat blocked"
+              : "seat"
+          }
+          {...(this.props.blockedSeats &&
+          this.props.blockedSeats.includes(`${name}-${i}`)
+            ? {}
+            : { disabled: true })}
+          onClick={this.handleSeatClick}
+        >
+          {i}
+        </div>
+      );
+    }
+    return divs;
+  };
 
   render() {
     return (
       <div className="hall">
         <div className="seats">
           <div className="screen">Ekran</div>
-          <div className="row">
-            <div className="row-name">A</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">B</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">C</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">D</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">E</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">F</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">G</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">H</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">I</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">J</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">K</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">L</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">M</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">N</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
-          <div className="row">
-            <div className="row-name">O</div>
-            <div className="seat" onClick={this.onClickHandler}>
-              1
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              2
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              3
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              4
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              5
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              6
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              7
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              8
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              9
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              10
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              11
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              12
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              13
-            </div>
-            <div className="seat" onClick={this.onClickHandler}>
-              14
-            </div>
-          </div>
+          <div className="row">{this.renderRow("A", 14)}</div>
+          <div className="row">{this.renderRow("B", 14)}</div>
+          <div className="row">{this.renderRow("C", 14)}</div>
+          <div className="row">{this.renderRow("D", 10)}</div>
+          <div className="row">{this.renderRow("E", 10)}</div>
+          <div className="row">{this.renderRow("F", 10)}</div>
+          <div className="row">{this.renderRow("G", 14)}</div>
+          <div className="row">{this.renderRow("H", 14)}</div>
+          <div className="row">{this.renderRow("I", 14)}</div>
+          <div className="row">{this.renderRow("J", 14)}</div>
+          <div className="row">{this.renderRow("K", 14)}</div>
+          <div className="row">{this.renderRow("L", 14)}</div>
+          <div className="row">{this.renderRow("M", 14)}</div>
+          <div className="row">{this.renderRow("N", 14)}</div>
+          <div className="row">{this.renderRow("O", 14)}</div>
         </div>
       </div>
     );

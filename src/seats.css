@@ -50,6 +50,10 @@ nav {
   cursor: pointer;
 }
 
+.reservation-btn:disabled {
+  pointer-events: none;
+}
+
 .reservation-btn::before,
 .buy-btn::before {
   content: "";
@@ -83,8 +87,12 @@ nav {
   padding: 3px 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5%;
+  margin-top: 8%;
   margin-bottom: 1%;
+}
+
+.screen:hover {
+  cursor: default;
 }
 
 .seat {
@@ -99,6 +107,25 @@ nav {
   position: relative;
   text-align: center;
   margin: 1px;
+}
+
+.seat.blocked {
+  background: #2f4f4f;
+  width: 3.84615%;
+  max-width: 27px;
+  max-height: 27px;
+  min-width: 22px;
+  min-width: 22px;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  margin: 1px;
+}
+
+.seat.blocked:hover {
+  color: #000;
+  cursor: default;
 }
 
 .seat:before {
@@ -146,4 +173,26 @@ nav {
 
 .movie-name {
   color: whitesmoke;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #babfc2;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+.reservation-error {
+  color: #000;
+  text-align: center;
+  padding: 20px;
+  margin: 0px;
+  font-size: 0.7em;
 }

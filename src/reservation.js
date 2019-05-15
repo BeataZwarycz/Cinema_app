@@ -11,6 +11,14 @@ class Reservation extends Component {
       phone: ""
     };
 
+    if (!this.props.isReservationCorrect) {
+      return (
+        <div className="reservation-error">
+          Liczba miejsc nie zgadza się z liczbą wybranych biletów!
+        </div>
+      );
+    }
+
     return (
       <div className="container">
         <Fragment>
@@ -18,6 +26,8 @@ class Reservation extends Component {
             initialValues={initialState}
             onSubmit={(values, actions) => {
               console.log(values);
+              this.props.close();
+              this.props.sendReservation();
             }}
           >
             {props => (

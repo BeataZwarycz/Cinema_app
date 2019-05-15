@@ -29,6 +29,8 @@ Button[type=submit]:hover {
     width: 60%;
     display: inline-block;
     border: 1px solid #ccc;
+    background: #fff;
+    padding: 14px;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 0.8em;

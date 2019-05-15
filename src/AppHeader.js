@@ -1,29 +1,17 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./seats.css";
-import ReactDOM from "react-dom";
-import Main from "./Main";
 
 class AppHeader extends Component {
   render() {
     return (
       <header>
         <nav className="navbar">
-          <a className="logo" href="_blank" onClick={this.goToMain}>
+          <Link to="/" className="logo">
             <i className="fa fa-film" /> Coderscamp Cinema
-          </a>
+          </Link>
         </nav>
       </header>
-    );
-  }
-
-  goToMain() {
-    const rootElement = document.getElementById("root");
-    ReactDOM.render(
-      <div>
-        <AppHeader />
-        <Main />
-      </div>,
-      rootElement
     );
   }
 }
