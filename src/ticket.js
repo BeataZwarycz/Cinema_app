@@ -32,9 +32,9 @@ class Amount extends React.Component {
   };
 
   handleChange = selectedOption => {
-    this.setState({
-      numOfTickets: this.state.numOfTickets + selectedOption.value
-    }, () => {console.log(this.state)})
+    this.setState(state => ({
+      numOfTickets: state.numOfTickets + selectedOption.value
+    }), () => {console.log(this.state)})
   };
 
   render() {

@@ -5,13 +5,14 @@ import "./seats.css";
 class Seats extends Component {
   constructor(props) {
     super(props);
-    this.state = { numOfTicket: 0 };
+    this.state = { number: 0 };
 
     this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   onClickHandler(e) {
     const seat = e.target;
+    console.log(Amount)
 
     if (seat.className === "seat") {
       seat.style.color = "#ffffff";
@@ -19,9 +20,9 @@ class Seats extends Component {
       seat.className = "seat clicked";
 
       this.setState(state => ({
-        numOfTickets: state.numOfTickets + 1
+        number: state.number + 1
       }));
-      console.log(this.state.numOfTickets)
+      console.log(this.state.number)
 
       return this.state.numOfTickets;
     } if (seat.className === "seat clicked") {
@@ -30,10 +31,10 @@ class Seats extends Component {
       seat.className = "seat"
 
       this.setState(state => ({
-        numOfTickets: state.numOfTickets - 1
+        number: state.number - 1
       }));
 
-      return this.state.numOfTickets;
+      return this.state.number;
     }
   }
 
