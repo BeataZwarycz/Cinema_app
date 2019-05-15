@@ -92,8 +92,12 @@ class MovieDetails extends Component {
     );
     request.setRequestHeader("Content-Type", "application/json");
     request.onload = function() {
-      const data = JSON.parse(this.response);
+      let data = JSON.parse(this.response);
       if (request.status === 200) {
+        data = data.filter(
+          obj =>
+            obj.movieId === movieId && obj.date === date && obj.time === time
+        );
         console.log(data);
         changeState(data.map(obj => obj.seats));
       } else {
